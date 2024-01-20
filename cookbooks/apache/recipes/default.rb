@@ -30,18 +30,11 @@ link '/etc/apache2/sites-enabled/vagrant.conf' do
     notifies :restart, resources(:service => "apache2")
 end
 
-# cookbook_file "/vagrant/index.html" do
+# cookbook_file "#{node['apache']['document_root']}/index.html" do
 #     source 'index.html'
 #     only_if do
 #         File.exist?('/etc/apache2/sites-enabled/vagrant.conf')
 #     end
 # end
-
-cookbook_file "#{node['apache']['document_root']}/index.html" do
-    source 'index.html'
-    only_if do
-        File.exist?('/etc/apache2/sites-enabled/vagrant.conf')
-    end
-end
 
 include_recipe '::facts'
