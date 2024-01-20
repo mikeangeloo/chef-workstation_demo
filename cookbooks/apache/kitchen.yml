@@ -24,12 +24,17 @@ verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu
-    driver:
-      vagrantfiles:
-        - VagrantfileA.rb
+  # - name: ubuntu
+  #   driver:
+  #     vagrantfiles:
+  #       - VagrantfileA.rb
+  - name: ubuntu-22.04
+  - name: centos-71.8
 
 suites:
-  - name: apache
+  # - name: apache
+  #   run_list:
+  #   - recipe[apache::default]
+  - name: practica
     run_list:
     - recipe[apache::default]
