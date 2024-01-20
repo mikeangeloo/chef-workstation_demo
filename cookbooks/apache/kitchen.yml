@@ -10,6 +10,8 @@ driver:
 #  network:
 #    - ["forwarded_port", {guest: 80, host: 8080}]
 
+# Vagrant drivers: https://kitchen.ci/docs/drivers/vagrant/
+
 provisioner:
   name: chef_zero
 
@@ -19,16 +21,13 @@ provisioner:
   #  product_version: 15
 
 verifier:
-  name: busser
+  name: inspec
 
 platforms:
   - name: ubuntu
     driver:
       vagrantfiles:
         - VagrantfileA.rb
-      # box_url: "https://vagrantcloud.com/gyptazy/boxes/ubuntu22.04-arm64/versions/1.0.1/providers/vmware_fusion/arm64/vagrant.box"
-      # customize: 
-      #   memory: 1024
 
 suites:
   - name: apache
